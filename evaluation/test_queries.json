@@ -1,0 +1,53 @@
+[
+  {
+    "id": "KIVI_Q1",
+    "technology": "KIVI",
+    "query": "How does KIVI reduce KV cache memory usage?",
+    "expected_keywords": [
+      "quantization",
+      "2-bit"
+    ]
+  },
+  {
+    "id": "KIVI_Q2",
+    "technology": "KIVI",
+    "query": "How are keys and values quantized differently in KIVI?",
+    "expected_keywords": [
+      "per-channel",
+      "per-token"
+    ]
+  },
+  {
+    "id": "KIVI_Q3",
+    "technology": "KIVI",
+    "query": "KIVI는 KV Cache 메모리를 어떤 방식으로 줄이는가?",
+    "expected_keywords": [
+      "quantization"
+    ]
+  },
+  {
+    "id": "INFINIGEN_Q1",
+    "technology": "InfiniGen",
+    "query": "How does InfiniGen reduce KV cache transfer overhead?",
+    "expected_keywords": [
+      "prefetch"
+    ]
+  },
+  {
+    "id": "INFINIGEN_Q2",
+    "technology": "InfiniGen",
+    "query": "How does InfiniGen use host memory for KV cache management?",
+    "expected_keywords": [
+      "host",
+      "memory"
+    ]
+  },
+  {
+    "id": "INFINIGEN_Q3",
+    "technology": "InfiniGen",
+    "query": "InfiniGen은 필요한 KV Cache를 어떻게 선택적으로 가져오는가?",
+    "expected_keywords": [
+      "prefetch"
+    ]
+  }
+]
