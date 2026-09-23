@@ -1,9 +1,11 @@
 import json
+from pathlib import Path
 
 from rag.retriever import retrieve_documents
 
 
-TEST_FILE = "evaluation/test_queries.json"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+TEST_FILE = PROJECT_ROOT / "evaluation/test_queries.json"
 
 
 def evaluate_retrieval(k=4):

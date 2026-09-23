@@ -6,7 +6,8 @@ from rag.chunker import build_chunks
 from rag.embeddings import get_embeddings
 
 
-VECTORSTORE_PATH = "data/vectorstore/faiss_index"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+VECTORSTORE_PATH = PROJECT_ROOT / "data/vectorstore/faiss_index"
 
 
 def build_vectorstore():
@@ -23,12 +24,12 @@ def build_vectorstore():
         embedding=embeddings,
     )
 
-    Path("data/vectorstore").mkdir(
+    VECTORSTORE_PATH.parent.mkdir(
         parents=True,
         exist_ok=True,
     )
 
-    vectorstore.save_local(VECTORSTORE_PATH)
+    vectorstore.save_local(str(VECTORSTORE_PATH))
 
     print("\n[SUCCESS] Vector store created")
     print(f"Saved to: {VECTORSTORE_PATH}")
@@ -41,7 +42,7 @@ def load_vectorstore():
     embeddings = get_embeddings()
 
     vectorstore = FAISS.load_local(
-        VECTORSTORE_PATH,
+        str(VECTORSTORE_PATH),
         embeddings,
         allow_dangerous_deserialization=True,
     )

@@ -1,6 +1,10 @@
+from threading import Lock
+
 from langchain_huggingface import HuggingFaceEmbeddings
 
 MODEL_NAME = "Alibaba-NLP/gte-multilingual-base"
+_EMBEDDINGS = None
+_EMBEDDINGS_LOCK = Lock()
 
 
 def get_embeddings():
@@ -8,18 +12,23 @@ def get_embeddings():
     오픈소스 multilingual embedding 모델을 반환한다.
     한국어 질의와 영어 논문 간 semantic retrieval을 지원한다.
     """
-    embeddings = HuggingFaceEmbeddings(
-        model_name=MODEL_NAME,
-        model_kwargs={
-            "device": "cpu",
-            "trust_remote_code": True,
-        },
-        encode_kwargs={
-            "normalize_embeddings": True
-        },
-    )
+    global _EMBEDDINGS
 
-    return embeddings
+    if _EMBEDDINGS is None:
+        with _EMBEDDINGS_LOCK:
+            if _EMBEDDINGS is None:
+                _EMBEDDINGS = HuggingFaceEmbeddings(
+                    model_name=MODEL_NAME,
+                    model_kwargs={
+                        "device": "cpu",
+                        "trust_remote_code": True,
+                    },
+                    encode_kwargs={
+                        "normalize_embeddings": True
+                    },
+                )
+
+    return _EMBEDDINGS
 
 
 if __name__ == "__main__":

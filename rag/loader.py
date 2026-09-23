@@ -2,6 +2,9 @@ from pathlib import Path
 from langchain_community.document_loaders import PyPDFLoader
 
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+
 def load_pdf(pdf_path: str, technology: str):
     """
     PDF를 페이지 단위 Document로 로드하고
@@ -29,12 +32,12 @@ def load_pdf(pdf_path: str, technology: str):
 
 def load_all_documents():
     kivi_docs = load_pdf(
-        "data/raw/kivi.pdf",
+        PROJECT_ROOT / "data/raw/kivi.pdf",
         technology="KIVI"
     )
 
     infinigen_docs = load_pdf(
-        "data/raw/infinigen.pdf",
+        PROJECT_ROOT / "data/raw/infinigen.pdf",
         technology="InfiniGen"
     )
 
