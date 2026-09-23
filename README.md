@@ -245,4 +245,4 @@ outputs/final_report.md
 
 ## Contributors
 
-- 본인 이름: Technology Selection, RAG Pipeline, Agent Design, Prompt Engineering, Evaluation, Report Generation
+- 개인과제
